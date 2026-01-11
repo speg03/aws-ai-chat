@@ -1,16 +1,13 @@
 import { describe, expect, test } from "vitest";
+import { greet } from "./utils";
 
-describe("基本的なテスト", () => {
-    test("文字列の長さを正しく計算する", () => {
-        expect("hello".length).toBe(5); // 正しい期待値に修正
-        expect("".length).toBe(0); // 正しい期待値に修正
-        expect("JavaScript".length).toBe(10);
+describe("greet関数", () => {
+    test("正常な名前で正しい挨拶を返す", () => {
+        expect(greet("Alice")).toBe("Hello, Alice!");
     });
 
-    test("配列の操作が正しく動作する", () => {
-        const numbers = [1, 2, 3];
-        expect(numbers.length).toBe(3);
-        expect(numbers.includes(2)).toBe(true);
-        expect(numbers.includes(5)).toBe(false);
+    test("空文字や無効な名前の場合はゲスト扱いする", () => {
+        expect(greet("")).toBe("Hello, Guest!");
+        expect(greet("   ")).toBe("Hello, Guest!");
     });
 });
